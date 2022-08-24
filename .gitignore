@@ -8,3 +8,4 @@
 
 /dwm/dwm
 /dwm/*.o
+*.vscode
