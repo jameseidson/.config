@@ -1,0 +1,10 @@
+/*
+
+!/.gitignore
+!/dwm/
+!/alacritty/
+!/nvim/
+!/rofi/
+
+/dwm/dwm
+/dwm/*.o
