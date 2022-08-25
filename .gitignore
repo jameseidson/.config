@@ -1,11 +1,9 @@
-/*
+dwm/dwm
+dwm/*.o
 
-!/.gitignore
-!/dwm/
-!/alacritty/
-!/nvim/
-!/rofi/
+dmenu/dmenu
+dmenu/config.h
+dmenu/*.o
+dmenu/stest
 
-/dwm/dwm
-/dwm/*.o
 *.vscode
