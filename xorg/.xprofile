@@ -1,0 +1,4 @@
+xset r rate 200 40
+xrandr --output DP-0 --mode 2560x1440 --rate 165
+
+feh --bg-fill ~/media/wallpaper.jpg
