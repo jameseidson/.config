@@ -9,13 +9,13 @@
 }
 
 configuration {
-	// modes: [drun, run, window, filebrowser];
 	matching: "fuzzy";
 	icon-theme: "Papirus";
+	window-format: "{c} {t}";
 }
 
 window {
-	font: "Misc Tamsyn 13";
+	font: "JetBrainsMono Nerd Font 10";
 	width: 15%;
 	border: 5px;
 	padding: 0px;
@@ -41,6 +41,8 @@ entry {
 listview {
 	scrollbar: false;
 	dynamic: false;
+	fixed-height: false;
+	fixed-columns: true;
 	lines: 20;
 	border: 0px;
 	children: [element];
@@ -50,7 +52,7 @@ element {
 	orientation: horizontal;
 	padding: 1px 5px;
 	spacing: 5px;
-	children: [element-text, element-icon];
+	children: [element-icon, element-text];
 }
 
 element.normal.normal {
