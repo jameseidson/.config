@@ -50,7 +50,7 @@ element {
 	orientation: horizontal;
 	padding: 1px 5px;
 	spacing: 5px;
-	children: [element-icon, element-text];
+	children: [element-text, element-icon];
 }
 
 element.normal.normal {
