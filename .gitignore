@@ -1,9 +1,4 @@
 dwm/dwm
 dwm/*.o
 
-dmenu/dmenu
-dmenu/config.h
-dmenu/*.o
-dmenu/stest
-
 *.vscode

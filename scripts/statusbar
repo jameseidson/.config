@@ -1,0 +1,36 @@
+#!/bin/dash
+
+ram() {
+    free | awk 'NR == 2 {printf " %d%%\n", $3/$2*100}'
+}
+
+vol() {
+    vol="$(pamixer --get-volume)"
+    [ $(pamixer --get-mute) = "true" ] && icon="婢 " || icon="墳 "
+    echo "$icon$vol%"
+}
+
+datetime() {
+    echo " $(date "+%a %b %d, %I:%M %p")"
+}
+
+cpu() {
+    cache="/tmp/cpustatscache"
+    current=$(awk '$1 == "cpu" {printf "%d %d\n", ($2 + $3 + $4 + $5), $5 }' /proc/stat)
+
+    print_pct() {
+            old=$(cat "$cache")
+            currtotal=${current%% *}
+            curridle=${current##* }
+            echo "$old" | awk -v currtotal="$currtotal" -v curridle="$curridle" '{printf " %d%%\n", (1 - (curridle - $2) / (currtotal - $1)) * 100}'
+    }
+            
+    [ ! -f $cache ] && printf "  " || print_pct;
+
+    echo "$current" > "$cache"
+}
+
+while true; do
+	xsetroot -name "$(cpu) | $(ram) | $(vol) | $(datetime)"
+	sleep 2
+done
