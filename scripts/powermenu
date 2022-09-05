@@ -1,0 +1,27 @@
+#!/bin/dash
+
+dwm_pid="$(pidof dwm)"
+prompt="rofi -dmenu -i"
+
+shutdown=" Shutdown"
+reboot=" Reboot"
+suspend="鈴 Suspend"
+logout="﫼 Logout"
+
+option="$shutdown\n$reboot\n$suspend\n$logout"
+
+select="$(echo $option | $prompt)"
+
+case $select in
+	$shutdown)
+		systemctl poweroff
+		;;
+	$reboot)
+		systemctl reboot
+		;;
+	$suspend)
+		systemctl suspend
+		;;
+	$logout)
+    [[ ! -z "$dwm" ]] && kill -s TERM $dwm
+esac
