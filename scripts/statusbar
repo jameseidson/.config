@@ -31,6 +31,6 @@ cpu() {
 }
 
 while true; do
-	xsetroot -name "$(cpu) | $(ram) | $(vol) | $(datetime)"
-	sleep 2
+	xsetroot -name "$(cpu) | $(ram) | $(vol) | $(datetime) |"
+	sleep 1
 done
