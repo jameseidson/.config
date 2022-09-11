@@ -1,4 +1,5 @@
 dwm/dwm
 dwm/*.o
+dwm/config.h
 
 *.vscode
