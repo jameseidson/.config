@@ -15,7 +15,7 @@ configuration {
 }
 
 window {
-	font: "JetBrainsMono Nerd Font 10";
+	font: "Terminus (TTF) 12";
 	width: 15%;
 	border: 5px;
 	padding: 0px;
