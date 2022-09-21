@@ -6,3 +6,4 @@ feh --bg-fill ~/media/wallpaper.jpg
 ~/config/scripts/statusbar &
 nm-applet &
 blueman-applet &
+mailspring --background &
