@@ -1,8 +1,11 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:3400
+SETUVAR _fish_abbr_clearswp:rm\x20\x2drf\x20\x7e/\x2elocal/state/nvim/swap
+SETUVAR _fish_abbr_clswap:rm\x20\x2drf\x20\x7e/\x2elocal/state/nvim/swap
 SETUVAR _fish_abbr_new:alacritty\x20\x26\x3e\x20/dev/null\x20\x26\x20disown
-SETUVAR _fish_abbr_ssh:ssh\x20TERM\x3dxterm\x2d256color\x20ssh
+SETUVAR _fish_abbr_rmswap:rm\x20\x2drf\x20\x7e/\x2elocal/state/nvim/swap
+SETUVAR _fish_abbr_ssh:TERM\x3dxterm\x2d256color\x20ssh
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
