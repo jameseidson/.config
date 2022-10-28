@@ -23,5 +23,5 @@ case $select in
 		systemctl suspend
 		;;
 	$logout)
-    [[ ! -z "$dwm" ]] && kill -s TERM $dwm
+    pkill -9 -u $USER
 esac
