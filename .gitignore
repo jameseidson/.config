@@ -2,4 +2,6 @@ dwm/dwm
 dwm/*.o
 dwm/config.h
 
+nvim/lazy-lock.json
+
 *.vscode
