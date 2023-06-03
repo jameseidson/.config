@@ -5,3 +5,4 @@ end
 abbr -a ssh "TERM=xterm-256color ssh -Y" 
 abbr -a new "alacritty &> /dev/null & disown"
 abbr -a rmswap "rm -rf ~/.local/state/nvim/swap"
+abbr -a hx "helix"
