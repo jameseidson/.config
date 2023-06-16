@@ -1,7 +1,0 @@
-theme = "gruvbox_dark_hard"
-
-[editor]
-line-number = "relative"
-scrolloff = 1024
-bufferline = "multiple"
-color-modes = true
