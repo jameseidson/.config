@@ -1,3 +1,6 @@
 [submodule "dwm"]
 	path = dwm
 	url = git@github.com:jameseidson/dwm.git
+[submodule "nvim"]
+	path = nvim
+	url = git@github.com:jameseidson/nvim.git
