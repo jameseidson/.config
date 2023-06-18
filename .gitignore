@@ -5,3 +5,4 @@ dwm/config.h
 nvim/lazy-lock.json
 
 *.vscode
+*.luarc.json
