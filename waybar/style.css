@@ -1,0 +1,116 @@
+@define-color dark0_hard #1d2021;
+@define-color dark0 #282828;
+@define-color dark0_soft #32302f;
+@define-color dark1 #3c3836;
+@define-color dark2 #404944;
+@define-color dark3 #664c44;
+@define-color dark4 #7c6f64;
+
+@define-color light0_hard #f9f4d7;
+@define-color light0 #fbf1c7;
+@define-color light0_soft #f2e4bc;
+@define-color light1 #ebdbb2;
+@define-color light2 #d4c4a1;
+@define-color light3 #bdae93;
+@define-color light4 #a89984;
+
+@define-color bright_red #fb4934;
+@define-color bright_green #b8bb26;
+@define-color bright_yellow #fabd2f;
+@define-color bright_blue #83a498;
+@define-color bright_purple #d3869b;
+@define-color bright_aqua #8ec07c;
+@define-color bright_orange #fe8019;
+
+@define-color neutral_red #cc241d;
+@define-color neutral_green #98971a;
+@define-color neutral_yellow #d79921;
+@define-color neutral_blue #448488;
+@define-color neutral_purple #b16286;
+@define-color neutral_aqua #689d6a;
+@define-color neutral_orange #d64d0e;
+
+@define-color faded_red #9d0006;
+@define-color faded_green #79740e;
+@define-color faded_yellow #b47614;
+@define-color faded_blue #076678;
+@define-color faded_purple #8f3f71;
+@define-color faded_aqua #427b48;
+@define-color faded_orange #af3a03;
+
+* {
+  border-radius: 0px;
+  min-height: 0;
+  font-family: "Terminus", "Font Awesome 6 Free";
+  font-weight: bold;
+  font-size: 12px;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  color: @light0_hard;
+  background-color: @dark0_hard;
+  border-color: @dark1;
+  border-style: solid;
+  border-width: 2px;
+  padding: 2px;
+}
+
+.modules-left {
+  margin-left: 10px;
+}
+
+.modules-right {
+  margin-right: 10px;
+}
+
+#clock.date,
+#clock.time,
+#disk.root,
+#disk.home,
+#cpu,
+#memory,
+#temperature,
+#custom-updater,
+#network,
+#tray {
+  margin: 2px;
+  padding: 0px 4px 0px 4px;
+  background-color: @dark1;
+}
+
+#tags button:hover {
+  margin: 2px;
+  background-color: @dark4;
+}
+
+#tags button.occupied:hover {
+  background-color: @dark4;
+}
+
+#tags button.occupied {
+  margin: 4px;
+  background-color: @dark1;
+}
+
+#tags button.focused {
+  color: @dark0_hard;
+  margin: 2px;
+  background-color: @light4;
+}
+
+#tags button.urgent {
+  color: @faded_orange;
+  margin: 2px;
+  background-color: @dark1;
+}
+
+#temperature.critical {
+  color: @faded_orange;
+}
+

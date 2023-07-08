@@ -1,0 +1,60 @@
+#!/bin/dash
+
+/bin/dash $HOME/config/scripts/wm-start
+
+riverctl focus-follows-cursor always
+riverctl set-repeat 40 200
+
+riverctl map normal Super+Shift X exit
+
+riverctl map normal Super Return spawn "alacritty"
+riverctl map normal Super W spawn "firefox"
+riverctl map normal Super D spawn "rofi -modi drun -show drun"
+riverctl map normal Super+Shift Q spawn "$HOME/config/scripts/powermenu"
+
+riverctl map normal Super Q close
+riverctl map normal Super L focus-view next
+riverctl map normal Super H focus-view previous
+
+riverctl map normal Super+Shift Return zoom
+
+riverctl map normal Super F toggle-fullscreen
+riverctl map normal Super Space toggle-float
+
+riverctl map-pointer normal Super BTN_MIDDLE toggle-float
+riverctl map-pointer normal Super BTN_LEFT move-view
+riverctl map-pointer normal Super BTN_RIGHT resize-view
+
+
+riverctl map normal Super Tab focus-previous-tags
+riverctl map normal Super+Shift Tab send-to-previous-tags
+
+for i in $(seq 1 9)
+do
+    tags=$((1 << ($i - 1)))
+    riverctl map normal Super $i set-focused-tags $tags
+    riverctl map normal Super+Shift $i set-view-tags $tags
+    riverctl map normal Super+Control $i toggle-focused-tags $tags
+    riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
+done
+
+all_tags=$(((1 << 32) - 1))
+riverctl map normal Super 0 set-focused-tags $all_tags
+riverctl map normal Super+Shift 0 set-view-tags $all_tags
+
+# riverctl declare-mode passthrough
+# riverctl map normal Super F10 enter-mode passthrough
+# riverctl map passthrough Super F10 enter-mode normal
+
+riverctl map $mode Super Equal spawn "pamixer -i 5"
+riverctl map $mode Super Minus spawn "pamixer -d 5"
+riverctl map $mode Super F10 spawn "pamixer --toggle-mute"
+
+riverctl background-color 0x1d2021
+riverctl border-color-focused 0xa89984
+riverctl border-color-unfocused 0x1d2021
+
+riverctl border-width 2
+
+riverctl default-layout rivertile
+rivertile -main-ratio 0.6 -view-padding 5 -outer-padding 5 &

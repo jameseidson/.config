@@ -1,0 +1,70 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 33,
+  "spacing": 4,
+  "margin-bottom": 4,
+
+  "modules-left": [ "tray", "network", "temperature", "cpu", "memory", "disk#home", "disk#root", "custom/updater" ],
+  "modules-center": [ "river/tags" ],
+  "modules-right": [ "clock#date", "clock#time" ],
+
+  "river/tags": { 
+    "num-tags": 8 
+  },
+
+  "clock#date": {
+    "format": " {:%a %b %d}",
+  },
+
+  "clock#time": {
+    "format": " {:%I:%M %p}",
+  },
+
+  "disk#home": {
+    "format": " {percentage_free}%",
+    "path": "/home/james"
+  },
+
+  "disk#root": {
+    "format": " {percentage_free}%",
+    "path": "/"
+  },
+
+  "cpu": {
+      "format": " {usage}%",
+      "tooltip": false
+  },
+
+  "memory": {
+      "format": " {}%"
+  },
+
+  "temperature": {
+      "critical-threshold": 80,
+      "format": "{icon} {temperatureC}°C",
+      "format-icons": ["", "", ""]
+  },
+
+  "custom/updater": {
+    "format": " {}",
+    "exec": "checkupdates | wc -l",
+    "interval": 15,
+    "on-click": "alacritty -e yay -Syu"
+  },
+
+  "network": {
+      "format-wifi": " {essid} ({signalStrength}%)",
+      "format-ethernet": " Wired",
+      "tooltip-format": "{ifname} via {gwaddr}",
+      "format-linked": "{ifname} (No IP)",
+      "format-disconnected": " Disconnected",
+      "format-alt": "{ifname}: {ipaddr}/{cidr}",
+      "on-click-right": "bash ~/.config/rofi/wifi_menu/rofi_wifi_menu"
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10 
+  },
+}

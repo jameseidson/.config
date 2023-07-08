@@ -1,0 +1,15 @@
+#!/bin/dash
+
+wlr-randr --output DP-1 --mode 2560x1440@165.080002Hz
+
+for pointer in $(riverctl list-inputs | grep "pointer")
+do
+  riverctl input $pointer accel-profile flat
+  riverctl input $pointer pointer-accel 0
+done
+
+/bin/dash $HOME/config/scripts/launch-waybar &
+swaybg -i $HOME/config/wallpaper.jpg -m fill &
+nm-applet --indicator &
+blueman-applet &
+discord --start-minimized &
