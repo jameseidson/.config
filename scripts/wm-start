@@ -2,6 +2,10 @@
 
 wlr-randr --output DP-1 --mode 2560x1440@165.080002Hz
 
+# swayidle -w timeout 600 'wlr-randr --output DP-1 --off' \
+#             resume 'wlr-randr --output DP-1 --on' \
+#             before-sleep 'swaylock -f --image $HOME/config/wallpaper.jpg'
+
 for pointer in $(riverctl list-inputs | grep "pointer")
 do
   riverctl input $pointer accel-profile flat

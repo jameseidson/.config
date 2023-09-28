@@ -20,7 +20,7 @@ case $select in
 		systemctl reboot
 		;;
 	$suspend)
-		systemctl suspend
+	  systemctl suspend & swaylock --image $HOME/config/wallpaper.jpg
 		;;
 	$logout)
     pkill -9 -u $USER
