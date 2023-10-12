@@ -1,10 +1,10 @@
 [submodule "dwm"]
-	path = dwm
-	url = git@github.com:jameseidson/dwm.git
+  path = dwm
+  url = git@github.com:jameseidson/dwm.git
   update = merge
   branch = main
 [submodule "nvim"]
-	path = nvim
-	url = git@github.com:jameseidson/nvim.git
+  path = nvim
+  url = git@github.com:jameseidson/nvim.git
   update = merge
   branch = main
