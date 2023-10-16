@@ -1,0 +1,17 @@
+theme "gruvbox-dark-hard"
+
+themes {
+  gruvbox-dark-hard {
+    fg      "#ebdbb2"
+    bg      "#1d2021"
+    black   "#282828"
+    red     "#fb4934"
+    green   "#98971a"
+    yellow  "#fabd2f"
+    blue    "#83a598"
+    magenta "#d3869b"
+    cyan    "#689d6a"
+    white   "#a89984"
+    orange  "#fe8019"
+  }
+}
