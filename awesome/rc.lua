@@ -51,7 +51,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(os.getenv("HOME") .. "/config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -230,8 +230,20 @@ awful.screen.connect_for_each_screen(function(s)
 		s.tasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
+			wibox.widget.textbox(" "),
 			wibox.widget.systray(),
-			wibox.widget.textclock(),
+			wibox.widget.textbox(" "),
+			require("widgets.fs")(),
+			wibox.widget.textbox(" "),
+			require("widgets.ram")(),
+			wibox.widget.textbox(" "),
+			require("widgets.cpu")({
+				enable_kill_button = true,
+			}),
+			wibox.widget.textbox(" "),
+			wibox.widget.textclock("%a %b%e %I:%M %p"),
+			wibox.widget.textbox(" "),
+			require("widgets.powermenu")(),
 			s.layoutbox,
 		},
 	})
