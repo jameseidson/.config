@@ -5,6 +5,7 @@
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
+local beautiful = require("beautiful")
 
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
@@ -35,6 +36,8 @@ theme.border_focus = theme.bg_focus
 theme.border_marked = "#91231c"
 
 theme.menu_border_color = theme.bg_focus
+theme.menubar_border_width = 1
+
 -- theme.taglist_bg_empty = theme.bg_normal
 -- theme.taglist_bg_occupied = theme.bg_normal
 -- theme.taglist_bg_occupied = theme.bg_normal
@@ -128,6 +131,10 @@ theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.visual_b
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
+
+theme = beautiful.theme_assets.recolor_titlebar(theme, theme.fg_normal, "normal")
+theme = beautiful.theme_assets.recolor_titlebar(theme, theme.fg_normal, "focus")
+theme = beautiful.theme_assets.recolor_layout(theme, theme.visual_blue)
 
 return theme
 

@@ -100,16 +100,9 @@ mainmenu = awful.menu({
 	},
 })
 
-launcher = {
-	widget = wibox.container.margin,
-	margins = 3,
-	awful.widget.launcher({
-		image = beautiful.awesome_icon,
-		menu = mainmenu,
-	}),
-}
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+menubar.geometry.height = 30
 -- }}}
 
 -- Create a wibox for each screen and add it
@@ -239,28 +232,21 @@ awful.screen.connect_for_each_screen(function(s)
 			{ -- Left widgets
 				layout = wibox.layout.fixed.horizontal,
 				spacing = 2,
-				launcher,
+				s.layoutbox,
 				s.tagtasklist, -- s.taglist,
-				s.promptbox,
 			},
 			wibox.widget.textbox(""),
 			{ -- Right widgets
 				layout = wibox.layout.fixed.horizontal,
-				wibox.widget.textbox(""),
+				spacing = 2,
 				wibox.widget.systray(),
-				wibox.widget.textbox(""),
 				require("widgets.fs")(),
-				wibox.widget.textbox(""),
 				require("widgets.ram")(),
-				wibox.widget.textbox(""),
 				require("widgets.cpu")({
 					enable_kill_button = true,
 				}),
-				wibox.widget.textbox(" "),
 				wibox.widget.textclock("%a %b%e %I:%M %p"),
-				wibox.widget.textbox(" "),
 				require("widgets.powermenu")(),
-				s.layoutbox,
 			},
 		},
 	})
@@ -373,22 +359,12 @@ globalkeys = gears.table.join(
 
 	-- Prompt
 	awful.key({ modkey }, "r", function()
-		awful.screen.focused().promptbox:run()
-	end, { description = "run prompt", group = "launcher" }),
+		awful.util.spawn("rofi -modi drun -show drun")
+	end, { description = "rofi launcher", group = "launcher" }),
 
-	awful.key({ modkey }, "x", function()
-		awful.prompt.run({
-			prompt = "Run Lua code: ",
-			textbox = awful.screen.focused().promptbox.widget,
-			exe_callback = awful.util.eval,
-			history_path = awful.util.get_cache_dir() .. "/history_eval",
-		})
-	end, { description = "lua execute prompt", group = "awesome" }),
-
-	-- Menubar
-	awful.key({ modkey }, "p", function()
-		menubar.show()
-	end, { description = "show the menubar", group = "launcher" })
+	awful.key({ modkey }, "`", function()
+		awful.util.spawn("rofi -theme-str 'window {width: 30%;}' -show window")
+	end, { description = "rofi app switcher", group = "launcher" })
 )
 
 clientkeys = gears.table.join(
@@ -604,9 +580,9 @@ client.connect_signal("request::titlebars", function(c)
 		wibox.widget.textbox(""),
 		{ -- Right
 			awful.titlebar.widget.floatingbutton(c),
-			awful.titlebar.widget.maximizedbutton(c),
-			awful.titlebar.widget.stickybutton(c),
 			awful.titlebar.widget.ontopbutton(c),
+			awful.titlebar.widget.minimizebutton(c),
+			awful.titlebar.widget.maximizedbutton(c),
 			awful.titlebar.widget.closebutton(c),
 			layout = wibox.layout.fixed.horizontal(),
 		},

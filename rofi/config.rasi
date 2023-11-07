@@ -1,16 +1,15 @@
 * {
 	dark0-hard:   #1D2021;
-	gray-245:     #928374;
+	gray-245:     #473c29;
 	light0-hard:  #F9F5D7;
-	light1:       #EBDBB2;
-	faded-yellow: #B57614;
-	faded-orange: #AF3A03;
-	forest-green: #302F17;
+	faded-yellow: #fabd2f;
+	faded-orange: #fa8019;
+	forest-green: #32361a;
 }
 
 configuration {
 	matching: "fuzzy";
-	icon-theme: "Papirus";
+	icon-theme: "Chicago95Papirus";
 	window-format: "{c} {t}";
 }
 
@@ -20,7 +19,7 @@ window {
 	border: 5px;
 	padding: 0px;
 	margin: 0px;
-	border-color: @gray-245;
+	border-color: @forest-green;
     background-color: @dark0-hard;
 }
 
@@ -34,7 +33,7 @@ prompt {
 }
 
 entry {
-    text-color: @light1;
+    text-color: @light0-hard;
     placeholder: "";
 }
 
@@ -57,7 +56,7 @@ element {
 
 element.normal.normal {
     background-color: @dark0-hard;
-    text-color:       @light1;
+    text-color:       @light0-hard;
 }
 
 element.normal.active {
@@ -86,7 +85,7 @@ element.selected.urgent {
 
 element.alternate.normal {
     background-color: @dark0-hard;
-    text-color:       @light1;
+    text-color:       @light0-hard;
 }
 
 element.alternate.active {
