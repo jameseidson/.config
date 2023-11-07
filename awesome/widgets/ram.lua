@@ -45,7 +45,7 @@ local function worker(user_args)
 			},
 		},
 		shape = gears.shape.rectangle,
-		border_color = beautiful.bg_minimize,
+		border_color = beautiful.border_focus,
 		border_width = 2,
 		offset = { y = 5 },
 	})

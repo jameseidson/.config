@@ -109,7 +109,7 @@ local function worker(user_args)
 		visible = false,
 		shape = gears.shape.rectangle,
 		border_width = 2,
-		border_color = beautiful.bg_minimize,
+		border_color = beautiful.border_focus,
 		maximum_width = 300,
 		offset = { y = 5 },
 		widget = {},

@@ -100,8 +100,14 @@ mainmenu = awful.menu({
 	},
 })
 
-launcher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mainmenu })
-
+launcher = {
+	widget = wibox.container.margin,
+	margins = 3,
+	awful.widget.launcher({
+		image = beautiful.awesome_icon,
+		menu = mainmenu,
+	}),
+}
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
@@ -201,50 +207,61 @@ awful.screen.connect_for_each_screen(function(s)
 		end)
 	))
 
-	-- Create a taglist widget
-	s.taglist = awful.widget.taglist({
+	s.tagtasklist = require("widgets.tagtasklist"):new({
 		screen = s,
-		filter = awful.widget.taglist.filter.all,
-		buttons = taglist_buttons,
+		taglist_buttons = taglist_buttons,
+		tasklist_buttons = tasklist_buttons,
 	})
 
-	-- Create a tasklist widget
-	s.tasklist = awful.widget.tasklist({
-		screen = s,
-		filter = awful.widget.tasklist.filter.currenttags,
-		buttons = tasklist_buttons,
-	})
+	-- -- Create a taglist widget
+	-- s.taglist = awful.widget.taglist({
+	-- 	screen = s,
+	-- 	filter = awful.widget.taglist.filter.all,
+	-- 	buttons = taglist_buttons,
+	-- })
+	--
+	-- -- Create a tasklist widget
+	-- s.tasklist = awful.widget.tasklist({
+	-- 	screen = s,
+	-- 	filter = awful.widget.tasklist.filter.currenttags,
+	-- 	buttons = tasklist_buttons,
+	-- })
 
 	-- Create the wibox
-	s.wibox = awful.wibar({ position = "top", screen = s })
+	s.wibox = awful.wibar({ position = "top", height = 32 })
 
 	-- Add widgets to the wibox
 	s.wibox:setup({
-		layout = wibox.layout.align.horizontal,
-		{ -- Left widgets
-			layout = wibox.layout.fixed.horizontal,
-			launcher,
-			s.taglist,
-			s.promptbox,
-		},
-		s.tasklist, -- Middle widget
-		{ -- Right widgets
-			layout = wibox.layout.fixed.horizontal,
-			wibox.widget.textbox(" "),
-			wibox.widget.systray(),
-			wibox.widget.textbox(" "),
-			require("widgets.fs")(),
-			wibox.widget.textbox(" "),
-			require("widgets.ram")(),
-			wibox.widget.textbox(" "),
-			require("widgets.cpu")({
-				enable_kill_button = true,
-			}),
-			wibox.widget.textbox(" "),
-			wibox.widget.textclock("%a %b%e %I:%M %p"),
-			wibox.widget.textbox(" "),
-			require("widgets.powermenu")(),
-			s.layoutbox,
+		widget = wibox.container.margin,
+		margins = 3,
+		{
+			layout = wibox.layout.align.horizontal,
+			{ -- Left widgets
+				layout = wibox.layout.fixed.horizontal,
+				spacing = 2,
+				launcher,
+				s.tagtasklist, -- s.taglist,
+				s.promptbox,
+			},
+			wibox.widget.textbox(""),
+			{ -- Right widgets
+				layout = wibox.layout.fixed.horizontal,
+				wibox.widget.textbox(""),
+				wibox.widget.systray(),
+				wibox.widget.textbox(""),
+				require("widgets.fs")(),
+				wibox.widget.textbox(""),
+				require("widgets.ram")(),
+				wibox.widget.textbox(""),
+				require("widgets.cpu")({
+					enable_kill_button = true,
+				}),
+				wibox.widget.textbox(" "),
+				wibox.widget.textclock("%a %b%e %I:%M %p"),
+				wibox.widget.textbox(" "),
+				require("widgets.powermenu")(),
+				s.layoutbox,
+			},
 		},
 	})
 end)
@@ -576,19 +593,15 @@ client.connect_signal("request::titlebars", function(c)
 	)
 
 	awful.titlebar(c):setup({
-		{ -- Left
-			awful.titlebar.widget.iconwidget(c),
-			buttons = buttons,
-			layout = wibox.layout.fixed.horizontal,
-		},
 		{ -- Middle
 			{ -- Title
-				align = "center",
+				align = "left",
 				widget = awful.titlebar.widget.titlewidget(c),
 			},
 			buttons = buttons,
 			layout = wibox.layout.flex.horizontal,
 		},
+		wibox.widget.textbox(""),
 		{ -- Right
 			awful.titlebar.widget.floatingbutton(c),
 			awful.titlebar.widget.maximizedbutton(c),

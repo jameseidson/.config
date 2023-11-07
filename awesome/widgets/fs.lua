@@ -20,16 +20,16 @@ config.refresh_rate = 60
 config.widget_width = 40
 config.widget_bar_color = beautiful.fg_normal
 config.widget_onclick_bg = beautiful.bg_urgent
-config.widget_border_color = beautiful.bg_focus
+config.widget_border_color = beautiful.border_focus
 config.widget_background_color = beautiful.bg_normal
 
 -- popup
 config.popup_bg = beautiful.bg_normal
 config.popup_border_width = 2
-config.popup_border_color = beautiful.bg_minimize
+config.popup_border_color = beautiful.border_focus
 config.popup_bar_color = beautiful.fg_normal
 config.popup_bar_background_color = beautiful.bg_normal
-config.popup_bar_border_color = beautiful.bg_minimize
+config.popup_bar_border_color = beautiful.border_focus
 
 local function worker(user_args)
 	local args = user_args or {}

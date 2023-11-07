@@ -13,11 +13,14 @@ local cfg_path = os.getenv("HOME") .. "/config/"
 local theme = {}
 
 theme.font = "Terminus+NerdFont 10"
+theme.taglist_font = "Terminus+NerdFont Bold 12"
 
+theme.visual_blue = "#83a598"
+theme.selected = theme.visual_blue
 theme.bg_normal = "#1d2021"
 theme.bg_focus = "#32361a"
 theme.bg_urgent = "#cc241d"
-theme.bg_minimize = "#141617"
+theme.bg_minimize = "#442e2d"
 theme.bg_systray = theme.bg_normal
 
 theme.fg_normal = "#ebdbb2"
@@ -26,10 +29,15 @@ theme.fg_urgent = theme.fg_normal
 theme.fg_minimize = theme.fg_normal
 
 theme.useless_gap = dpi(0)
-theme.border_width = dpi(2)
-theme.border_normal = theme.bg_minimize
+theme.border_width = dpi(1)
+theme.border_normal = theme.bg_normal
 theme.border_focus = theme.bg_focus
 theme.border_marked = "#91231c"
+
+theme.menu_border_color = theme.bg_focus
+-- theme.taglist_bg_empty = theme.bg_normal
+-- theme.taglist_bg_occupied = theme.bg_normal
+-- theme.taglist_bg_occupied = theme.bg_normal
 
 -- There are other variable sets
 -- overriding the default one when
@@ -45,9 +53,9 @@ theme.border_marked = "#91231c"
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Generate taglist squares:
-local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
+-- local taglist_square_size = dpi(4)
+-- theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
+-- theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
 
 -- Variables set for theming notifications:
 -- notification_font
@@ -115,7 +123,7 @@ theme.layout_cornersw = themes_path .. "default/layouts/cornersww.png"
 theme.layout_cornerse = themes_path .. "default/layouts/cornersew.png"
 
 -- Generate Awesome icon:
-theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus, theme.fg_focus)
+theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.visual_blue, theme.bg_normal)
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
