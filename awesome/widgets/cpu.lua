@@ -140,14 +140,9 @@ local function worker(user_args)
 
 	--- By default graph widget goes from left to right, so we mirror it and push up a bit
 	cpu_widget = wibox.widget({
-		{
-			cpugraph_widget,
-			reflection = { horizontal = true },
-			layout = wibox.container.mirror,
-		},
-		bottom = 2,
-		color = background_color,
-		widget = wibox.container.margin,
+		cpugraph_widget,
+		reflection = { horizontal = true },
+		layout = wibox.container.mirror,
 	})
 
 	-- This part runs constantly, also when the popup is closed.

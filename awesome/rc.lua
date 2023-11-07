@@ -18,6 +18,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+local ICONS = "/usr/share/icons/Chicago95/"
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -56,7 +58,7 @@ beautiful.init(os.getenv("HOME") .. "/config/awesome/theme.lua")
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
 editor = "nvim"
-editor_cmd = terminal .. " -e " .. editor
+editor_cmd = terminal .. " -e SHELL=/bin/bash " .. editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -95,8 +97,16 @@ awesomemenu = {
 
 mainmenu = awful.menu({
 	items = {
-		{ "awesome", awesomemenu, beautiful.awesome_icon },
-		{ "open terminal", terminal },
+		{ "awesome", awesomemenu, ICONS .. "/devices/48/computer.png" },
+		{ "terminal", terminal, ICONS .. "/apps/48/terminal.png" },
+		{ "editor", editor_cmd, ICONS .. "/apps/48/text-editor.png" },
+		{ "www", "google-chrome-stable", ICONS .. "/apps/48/browser.png" },
+		{ "files", "thunar", ICONS .. "/apps/48/file-manager.png" },
+		{
+			"screenshot",
+			"maim -sq /home/james/screenshot.png",
+			"/usr/share/icons/Chicago95/apps/48/applets-screenshooter.png",
+		},
 	},
 })
 
@@ -235,18 +245,43 @@ awful.screen.connect_for_each_screen(function(s)
 				s.layoutbox,
 				s.tagtasklist, -- s.taglist,
 			},
-			wibox.widget.textbox(""),
+			wibox.widget({}),
 			{ -- Right widgets
 				layout = wibox.layout.fixed.horizontal,
-				spacing = 2,
-				wibox.widget.systray(),
-				require("widgets.fs")(),
-				require("widgets.ram")(),
-				require("widgets.cpu")({
-					enable_kill_button = true,
-				}),
-				wibox.widget.textclock("%a %b%e %I:%M %p"),
-				require("widgets.powermenu")(),
+				spacing = 15,
+				-- wibox.widget.systray(),
+				{
+					layout = wibox.layout.fixed.horizontal,
+					spacing = 1,
+					wibox.widget.imagebox(ICONS .. "/devices/48/drive-harddisk.png", true),
+					require("widgets.fs")(),
+				},
+				{
+					layout = wibox.layout.fixed.horizontal,
+					spacing = 1,
+					wibox.widget.imagebox(ICONS .. "/devices/48/media-memory.png", true),
+					require("widgets.ram")(),
+				},
+				{
+					layout = wibox.layout.fixed.horizontal,
+					spacing = 1,
+					wibox.widget.imagebox(ICONS .. "/apps/48/xfce4-cpugraph-plugin.png", true),
+					require("widgets.cpu")({
+						enable_kill_button = true,
+					}),
+				},
+				{
+					layout = wibox.layout.fixed.horizontal,
+					spacing = 2,
+					wibox.widget.imagebox(ICONS .. "apps/48/clock.png", true),
+					wibox.widget.textclock("%a %b%e %I:%M %p"),
+				},
+				{
+					layout = wibox.layout.fixed.horizontal,
+					spacing = 1,
+					require("widgets.systray")(),
+					require("widgets.powermenu")(),
+				},
 			},
 		},
 	})

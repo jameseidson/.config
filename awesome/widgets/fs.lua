@@ -48,9 +48,8 @@ local function worker(user_args)
 			color = _config.widget_bar_color,
 			max_value = 100,
 			forced_height = 20,
-			forced_width = _config.widget_width,
+			forced_width = 60,
 			paddings = 2,
-			margins = 4,
 			border_width = 1,
 			border_radius = 2,
 			border_color = _config.widget_border_color,
@@ -103,9 +102,7 @@ local function worker(user_args)
 	storage_bar_widget:buttons(awful.util.table.join(awful.button({}, 1, function()
 		if popup.visible then
 			popup.visible = not popup.visible
-			storage_bar_widget:set_bg("#00000000")
 		else
-			storage_bar_widget:set_bg(_config.widget_background_color)
 			popup:move_next_to(mouse.current_widget_geometry)
 		end
 	end)))

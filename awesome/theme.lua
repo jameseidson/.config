@@ -17,6 +17,7 @@ theme.font = "Terminus+NerdFont 10"
 theme.taglist_font = "Terminus+NerdFont Bold 12"
 
 theme.visual_blue = "#83a598"
+theme.bg_dim = "#141617"
 theme.selected = theme.visual_blue
 theme.bg_normal = "#1d2021"
 theme.bg_focus = "#32361a"
