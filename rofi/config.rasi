@@ -5,6 +5,7 @@
 	faded-yellow: #fabd2f;
 	faded-orange: #fa8019;
 	forest-green: #32361a;
+  faded-blue:   #83a598;
 }
 
 configuration {
@@ -69,17 +70,17 @@ element.normal.urgent {
 }
 
 element.selected.normal {
-    background-color: @forest-green;
-    text-color:       @light0-hard;
+    background-color: @faded-blue;
+    text-color:       @dark0-hard;
 }
 
 element.selected.active {
-    background-color: @forest-green;
-    text-color:       @faded-yellow;
+    background-color: @faded-blue;
+    text-color:       @dark0-hard;
 }
 
 element.selected.urgent {
-    background-color: @forest-green;
+    background-color: @faded-blue;
     text-color:       @faded-orange;
 }
 

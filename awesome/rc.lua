@@ -18,6 +18,9 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+naughty.config.icon_dirs = { "/usr/share/icons/ArchLabs/48x48/status/", "/usr/share/icons/ArchLabs/48x48/devices/" }
+naughty.config.icon_formats = { "png", "gif", "svg" }
+
 local ICONS = "/usr/share/icons/Chicago95/"
 
 -- {{{ Error handling
@@ -273,8 +276,8 @@ awful.screen.connect_for_each_screen(function(s)
 				{
 					layout = wibox.layout.fixed.horizontal,
 					spacing = 2,
-					wibox.widget.imagebox(ICONS .. "apps/48/clock.png", true),
-					wibox.widget.textclock("%a %b%e %I:%M %p"),
+					wibox.widget.imagebox(ICONS .. "apps/48/calendar.png", true),
+					require("widgets.calendar")(),
 				},
 				{
 					layout = wibox.layout.fixed.horizontal,
@@ -399,7 +402,16 @@ globalkeys = gears.table.join(
 
 	awful.key({ modkey }, "`", function()
 		awful.util.spawn("rofi -theme-str 'window {width: 30%;}' -show window")
-	end, { description = "rofi app switcher", group = "launcher" })
+	end, { description = "rofi app switcher", group = "launcher" }),
+
+	-- Apps
+	awful.key({ modkey }, "F1", function()
+		awful.util.spawn("obsidian")
+	end, { description = "notes", group = "launcher" }),
+
+	awful.key({ modkey }, "F2", function()
+		awful.util.spawn("google-chrome-stable")
+	end, { description = "web browser", group = "launcher" })
 )
 
 clientkeys = gears.table.join(
@@ -637,3 +649,25 @@ client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
 -- }}}
+
+-- Icons
+client.connect_signal("manage", function(c)
+	local icon = menubar.utils.lookup_icon(c.instance)
+	local lower_icon = menubar.utils.lookup_icon(c.instance:lower())
+
+	--Check if the icon exists
+	if icon ~= nil then
+		local new = gears.surface(icon)
+		c.icon = new._native
+
+	--Check if the icon exists in the lowercase variety
+	elseif lower_icon ~= nil then
+		local new = gears.surface(lower_icon)
+		c.icon = new._native
+
+	--Check if the client already has an icon. If not, give it a default.
+	elseif c.icon == nil then
+		local new = gears.surface(menubar.utils.lookup_icon("application-default-icon"))
+		c.icon = new._native
+	end
+end)
