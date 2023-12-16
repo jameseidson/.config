@@ -58,6 +58,8 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(os.getenv("HOME") .. "/config/awesome/theme.lua")
 
+beautiful.notification_icon_size = 100
+
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
 editor = "nvim"
@@ -234,7 +236,7 @@ awful.screen.connect_for_each_screen(function(s)
 	-- })
 
 	-- Create the wibox
-	s.wibox = awful.wibar({ position = "top", height = 32 })
+	s.wibox = awful.wibar({ position = "top", height = 32, screen = s })
 
 	-- Add widgets to the wibox
 	s.wibox:setup({
@@ -305,9 +307,9 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 
-	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
+	-- awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 
-	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
+	-- awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
 
 	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
 
@@ -411,7 +413,11 @@ globalkeys = gears.table.join(
 
 	awful.key({ modkey }, "F2", function()
 		awful.util.spawn("google-chrome-stable")
-	end, { description = "web browser", group = "launcher" })
+	end, { description = "web", group = "launcher" }),
+
+	awful.key({ modkey }, "F3", function()
+		awful.util.spawn("thunderbird")
+	end, { description = "email", group = "launcher" })
 )
 
 clientkeys = gears.table.join(

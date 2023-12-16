@@ -1,9 +1,13 @@
+#!/bin/bash
+
 xset r rate 200 40
-xrandr --output DP-0 --mode 2560x1440 --rate 165
+
+for i in $(seq 0 2); do
+	xrandr --output DP-$i --mode 2560x1440 --rate 165
+done
 
 xbanish &
-
 nm-applet &
 blueman-applet &
-mailspring --background &
 volctl &
+alltray thunderbird &
