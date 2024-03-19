@@ -9,5 +9,5 @@ done
 xbanish &
 nm-applet &
 blueman-applet &
-volctl &
+# volctl &
 alltray thunderbird &
