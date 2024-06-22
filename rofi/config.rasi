@@ -1,100 +1,100 @@
 * {
-	dark0-hard:   #1D2021;
-	gray-245:     #473c29;
-	light0-hard:  #F9F5D7;
-	faded-yellow: #fabd2f;
-	faded-orange: #fa8019;
-	forest-green: #32361a;
+  dark0-hard:   #1D2021;
+  gray-245:     #473c29;
+  light0-hard:  #F9F5D7;
+  faded-yellow: #fabd2f;
+  faded-orange: #fa8019;
+  forest-green: #32361a;
   faded-blue:   #83a598;
 }
 
 configuration {
-	matching: "fuzzy";
-	icon-theme: "Chicago95Papirus";
-	window-format: "{c} {t}";
+  matching: "fuzzy";
+  window-format: "{c} {t}";
 }
 
 window {
-	font: "Terminus+NerdFont 14";
-	width: 15%;
-	border: 5px;
-	padding: 0px;
-	margin: 0px;
-	border-color: @forest-green;
-    background-color: @dark0-hard;
+  font: "Iosevka 14";
+  width: 30%;
+  border: 5px;
+  padding: 0px;
+  margin: 0px;
+  border-color: @forest-green;
+  background-color: @dark0-hard;
 }
 
 inputbar {
-	padding: 5px;
-	children: [prompt, entry];
+  padding: 5px;
+  children: [prompt, entry];
 }
 
 prompt {
-	enabled: false;
+  enabled: false;
 }
 
 entry {
-    text-color: @light0-hard;
-    placeholder: "";
+  text-color: @light0-hard;
+  placeholder: "";
 }
 
 listview {
-	scrollbar: false;
-	dynamic: false;
-	fixed-height: false;
-	fixed-columns: true;
-	lines: 20;
-	border: 0px;
-	children: [element];
+  scrollbar: false;
+  dynamic: false;
+  fixed-height: false;
+  fixed-columns: true;
+  lines: 20;
+  border: 0px;
+  children: [element];
 }
 
 element {
-	orientation: horizontal;
-	padding: 1px 5px;
-	spacing: 5px;
-	children: [element-icon, element-text];
+  orientation: horizontal;
+  padding: 1px 5px;
+  spacing: 5px;
+  children: [element-icon, element-text];
 }
 
 element.normal.normal {
-    background-color: @dark0-hard;
-    text-color:       @light0-hard;
+  background-color: @dark0-hard;
+  text-color:       @light0-hard;
 }
 
 element.normal.active {
-    background-color: @dark0-hard;
-    text-color:       @faded-yellow;
+  background-color: @dark0-hard;
+  text-color:       @faded-yellow;
 }
 element.normal.urgent {
-    background-color: @dark0-hard;
-    text-color:       @faded-orange;
+  background-color: @dark0-hard;
+  text-color:       @faded-orange;
+  font-weight:      500;
 }
 
 element.selected.normal {
-    background-color: @faded-blue;
-    text-color:       @dark0-hard;
+  background-color: @faded-blue;
+  text-color:       @dark0-hard;
 }
 
 element.selected.active {
-    background-color: @faded-blue;
-    text-color:       @dark0-hard;
+  background-color: @faded-blue;
+  text-color:       @dark0-hard;
 }
 
 element.selected.urgent {
-    background-color: @faded-blue;
-    text-color:       @faded-orange;
+  background-color: @faded-blue;
+  text-color:       @faded-orange;
 }
 
 element.alternate.normal {
-    background-color: @dark0-hard;
-    text-color:       @light0-hard;
+  background-color: @dark0-hard;
+  text-color:       @light0-hard;
 }
 
 element.alternate.active {
-    background-color: @dark0-hard;
-    text-color:       @faded-yellow;
+  background-color: @dark0-hard;
+  text-color:       @faded-yellow;
 }
 
 element.alternate.urgent {
-    background-color: @dark0-hard;
-    text-color:       @faded-orange;
+  background-color: @dark0-hard;
+  text-color:       @faded-orange;
 }
